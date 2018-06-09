@@ -1,3 +1,4 @@
+import random
 import re
 from chatbot_flight import flight
 from chatbot_config import respond, usr
@@ -21,10 +22,8 @@ def matches(usr_txt):
 
 
 def hello():
-
-    # TASK: Write a greeting function that returns a response randomly picked from a list.
-
-    return ""
+    greetings = ["How can I help you?", "What can I do for you?"]
+    return random.choice(greetings)
 
 
 if __name__ == '__main__':
