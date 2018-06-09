@@ -1,12 +1,13 @@
 from preprocessing import preproc
 
-# TASK: Import your gazetteer here
-gazetteer = []
+# Import your gazetteer
 
 
 def isloc(raw, ind, sent, lemma, pos):
-    # TASK: Write some rules here
-    return True
+
+    # TASK: Write some rules that will find a city name.
+
+        return False
 
 
 def NER_recursion(ind, sent, lemma, pos):
@@ -52,7 +53,7 @@ if __name__ == '__main__':
     # Test your stuff.
 
     s1 = 'I am going to Lviv from New York'
-    parsed = preproc(s1)[0]
+    parsed = preproc(s1)
     locs = find_loc(s1, parsed)
     for loc in locs:
         print loc[1] + '\t' + loc_relation(loc, parsed[0])

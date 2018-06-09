@@ -5,7 +5,14 @@ def get_country_description():
     sparql.setReturnFormat(JSON)
 
     sparql.setQuery(
-        # TASK: Write your query here
+        "PREFIX  dbpedia-owl:  <http://dbpedia.org/ontology/>"
+        "SELECT DISTINCT ?citylabel ?pop"
+        "WHERE {"
+            "?city rdf:type dbpedia-owl:City."
+            "?city rdfs:label ?citylabel."
+            "?city dbpedia-owl:populationTotal ?pop ."
+            "FILTER (lang(?citylabel) = 'en' and ?pop>10000)"
+        "}"
                     )
 
     return sparql.query().convert()
