@@ -29,6 +29,6 @@ def hello():
 if __name__ == '__main__':
     respond("Hello, human.")
     usr_txt = ''
-    while not re.match(r'hi|hello|greetings', usr_txt):
+    while not re.match(r'exit|bye|stop|stahp', usr_txt):
         usr_txt = raw_input(usr)
         respond(matches(usr_txt))

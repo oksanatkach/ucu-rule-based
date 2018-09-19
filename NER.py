@@ -71,9 +71,5 @@ if __name__ == '__main__':
     # Test your stuff.
 
     s1 = 'I am flying from Lviv to New York'
-
     parsed = preproc(s1)
-
     locs = [find_loc([], s1, parsed_sent) for parsed_sent in parsed]
-
-    print locs

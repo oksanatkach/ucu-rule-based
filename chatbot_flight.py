@@ -11,13 +11,14 @@ def flight(usr_txt, _from, _to, _date, tries):
         _to = None
         parsed = preproc(usr_txt)
         locs = [ find_loc([], usr_txt, parsed_sent) for parsed_sent in parsed ]
-        if len(locs) > 0:
-            for loc in locs:
-                loc_rel = loc_relation(loc, parsed[0])
-                if loc_rel == 'from':
-                    _from = loc[1]
-                elif loc_rel == 'to':
-                    _to = loc[1]
+        for sent_locs in locs:
+            if len(sent_locs) > 0:
+                for loc in sent_locs:
+                    loc_rel = loc_relation(loc, parsed[0])
+                    if loc_rel == 'from':
+                        _from = loc[1]
+                    elif loc_rel == 'to':
+                        _to = loc[1]
         return _from, _to, find_date(usr_txt)
 
     if not _from and not _to and not _date:
@@ -81,4 +82,4 @@ def flight(usr_txt, _from, _to, _date, tries):
         _date = find_date(usr_txt)
         return flight(usr_txt, _from, _to, _date, tries+1)
 
-    return "OK, looking for a " + _from + '-' + _to + ' flight on ' + _date + '.'
+    return "OK, looking for a %s-%s flight on %s." % (_from, _to, _date)
