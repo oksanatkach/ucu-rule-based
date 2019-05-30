@@ -1,10 +1,11 @@
-from preprocessing import preproc
-from NER import find_loc, loc_relation, isloc
-from date_regex import find_date, later_date
 from chatbot_config import respond, usr
+from date_regex import find_date, later_date
+from preprocessing.preprocessing import preproc
+
+from app.NER.NER import find_loc, loc_relation, isloc
 
 
-def flight(usr_txt, _from, _to, _date, tries):
+def flight(usr_txt, _from=None, _to=None, _date=None, tries=0):
 
     def find_data(usr_txt):
         _from = None
@@ -83,3 +84,9 @@ def flight(usr_txt, _from, _to, _date, tries):
         return flight(usr_txt, _from, _to, _date, tries+1)
 
     return "OK, looking for a %s-%s flight on %s." % (_from, _to, _date)
+
+
+if __name__ == '__main__':
+    string = "from Lviv to Moscow on 8th of June, 2018"
+    print(preproc(string))
+    print(flight('Lviv'))

@@ -1,6 +1,5 @@
-from preprocessing import preproc
-gazetteer = open('cities.lst').read().split('\n')
-
+from app.preprocessing import preproc
+from app import gazetteer
 
 def isloc(raw, ind, sent, lemma, pos):
 
@@ -39,7 +38,7 @@ def NER_recursion(ind, sent, lemma, pos):
 
 def find_loc(locs, raw, parsed):
     # for sent in parsed:
-    for ind in xrange(len(parsed)):
+    for ind in range(len(parsed)):
         el = parsed[ind]
         lemma = el[0]
         pos = el[1]
@@ -73,3 +72,4 @@ if __name__ == '__main__':
     s1 = 'I am flying from Lviv to New York'
     parsed = preproc(s1)
     locs = [find_loc([], s1, parsed_sent) for parsed_sent in parsed]
+    print(locs)

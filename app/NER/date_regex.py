@@ -24,6 +24,7 @@ date1 = days + '/' + months_num + '/' + years
 date2 = days + ends + re_months + years
 date3 = re_months + days + ends + '?,? ' + years
 
+
 def find_date(text):
 
     if re.search(date1, text.lower()):

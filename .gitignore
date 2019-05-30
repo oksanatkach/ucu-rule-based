@@ -1,6 +1,3 @@
 .idea/
-NER.pyc
-chatbot_config.pyc
-chatbot_flight.pyc
-date_regex.pyc
-preprocessing.pyc
+*.pyc
+__pycache__/
